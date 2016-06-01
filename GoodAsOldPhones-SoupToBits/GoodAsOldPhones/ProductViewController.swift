@@ -32,10 +32,10 @@ class ProductViewController: UIViewController {
             return
         }
         
-        let alertController = UIAlertController(title: "Added to Cart", message: "You added \(name) to the cart and it costs $\(price)", preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        let alertController = UIAlertController(title: "Added to Cart", message: "You added \(name) to the cart and it costs $\(price)", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
 
         let order = Order()
         order.product = product
@@ -47,7 +47,7 @@ class ProductViewController: UIViewController {
         ordersInCart?.append(order)
         
         if let orders = ordersInCart {
-            Orders.saveOrdersToArchive(orders)
+            Orders.saveOrdersToArchive(orders: orders)
         }
         
     }

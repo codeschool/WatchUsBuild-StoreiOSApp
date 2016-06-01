@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ryb-bN-cGR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ryb-bN-cGR">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Product View Controller-->
@@ -30,7 +30,7 @@
                                 <rect key="frame" x="81" y="189" width="212" height="41"/>
                                 <state key="normal" image="button-addtocart"/>
                                 <connections>
-                                    <action selector="addToCartPressed:" destination="2CX-aG-LJE" eventType="touchUpInside" id="kBc-FT-Axz"/>
+                                    <action selector="addToCartPressedWithSender:" destination="2CX-aG-LJE" eventType="touchUpInside" id="C6i-bz-xow"/>
                                 </connections>
                             </button>
                         </subviews>

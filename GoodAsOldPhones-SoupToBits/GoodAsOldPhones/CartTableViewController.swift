@@ -21,7 +21,7 @@ class CartTableViewController: UITableViewController {
         tableView.tableHeaderView = headerView
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
 //        let product = Product()
@@ -47,13 +47,13 @@ class CartTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ordersInCart?.count ?? 0
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CartCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CartCell", for: indexPath)
         
         let order = ordersInCart?[indexPath.row]
 
@@ -68,14 +68,14 @@ class CartTableViewController: UITableViewController {
 
     
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: NSIndexPath) {
+        if editingStyle == .delete {
             // Delete the row from the data source
-            ordersInCart?.removeAtIndex(indexPath.row)
+            ordersInCart?.remove(at: indexPath.row)
             // save array to disk
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             if let orders = ordersInCart {
-                Orders.saveOrdersToArchive(orders)
+                Orders.saveOrdersToArchive(orders: orders)
             }
             updateTotal()
         }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Orders: NSObject {
+class Orders: NSObject, NSCoding {
     var orders: [Order]?
     
     override init() {
@@ -16,22 +16,22 @@ class Orders: NSObject {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.orders = aDecoder.decodeObjectForKey("orders") as? [Order]
+        self.orders = aDecoder.decodeObject(forKey: "orders") as? [Order]
         
         super.init()
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(orders, forKey: "orders")
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(orders, forKey: "orders")
     }
     
     class func archiveFilePath() -> String {
-        let documentsDirectory = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-        return documentsDirectory.URLByAppendingPathComponent("cart.archive").path!
+        let documentsDirectory = NSFileManager.default().urlsForDirectory(.documentDirectory, inDomains: .userDomainMask)[0]
+        return documentsDirectory.appendingPathComponent("cart.archive").path!
     }
     
     class func readOrdersFromArchive() -> [Order]? {
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(archiveFilePath()) as? [Order]
+        return NSKeyedUnarchiver.unarchiveObject(withFile: archiveFilePath()) as? [Order]
     }
     
     class func saveOrdersToArchive(orders: [Order]) -> Bool {

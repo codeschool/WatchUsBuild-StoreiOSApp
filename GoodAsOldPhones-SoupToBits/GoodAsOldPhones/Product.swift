@@ -19,19 +19,19 @@ class Product: NSObject, NSCoding {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.name = aDecoder.decodeObjectForKey("name") as? String
-        self.productImage = aDecoder.decodeObjectForKey("productImage") as? String
-        self.cellImage = aDecoder.decodeObjectForKey("cellImage") as? String
-        self.price = aDecoder.decodeObjectForKey("price") as? Double
+        self.name = aDecoder.decodeObject(forKey: "name") as? String
+        self.productImage = aDecoder.decodeObject(forKey: "productImage") as? String
+        self.cellImage = aDecoder.decodeObject(forKey: "cellImage") as? String
+        self.price = aDecoder.decodeObject(forKey: "price") as? Double
         
         super.init()
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(name, forKey: "name")
-        aCoder.encodeObject(productImage, forKey: "productImage")
-        aCoder.encodeObject(cellImage, forKey: "cellImage")
-        aCoder.encodeObject(price, forKey: "price")
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(productImage, forKey: "productImage")
+        aCoder.encode(cellImage, forKey: "cellImage")
+        aCoder.encode(price, forKey: "price")
     }
 
 }

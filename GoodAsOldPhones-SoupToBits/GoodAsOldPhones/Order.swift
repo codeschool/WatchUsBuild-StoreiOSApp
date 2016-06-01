@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Order: NSObject {
+class Order: NSObject, NSCoding {
     var product: Product?
     
     override init() {
@@ -16,13 +16,13 @@ class Order: NSObject {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.product = aDecoder.decodeObjectForKey("product") as? Product
+        self.product = aDecoder.decodeObject(forKey: "product") as? Product
         
         super.init()
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(product, forKey: "product")
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(product, forKey: "product")
     }
 
 }
