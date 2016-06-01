@@ -40,7 +40,7 @@ class ProductsTableViewController: UITableViewController {
         
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if let p = products {
             return p.count
@@ -48,11 +48,11 @@ class ProductsTableViewController: UITableViewController {
         return 0
     }
 
-    override func tableView(tableView: UITableView,
-        cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+  override func tableView(_ tableView: UITableView,
+                          cellForRowAt indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell",
-            forIndexPath: indexPath)
+      let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell",
+                                               for: indexPath)
         
         let product = products?[indexPath.row]
         
@@ -69,12 +69,12 @@ class ProductsTableViewController: UITableViewController {
         return cell
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowProduct" {
             let productVC = segue.destinationViewController as? ProductViewController
             
             guard let cell = sender as? UITableViewCell,
-                let indexPath = tableView.indexPathForCell(cell) else {
+                let indexPath = tableView.indexPath(for: cell) else {
                     return
             }
             productVC?.product = products?[indexPath.row]
