@@ -47,7 +47,7 @@ class ProductViewController: UIViewController {
         ordersInCart?.append(order)
         
         if let orders = ordersInCart {
-            Orders.saveOrdersToArchive(orders: orders)
+            let _ = Orders.saveOrdersToArchive(orders: orders)
         }
         
     }

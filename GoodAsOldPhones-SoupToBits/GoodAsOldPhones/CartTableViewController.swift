@@ -52,7 +52,7 @@ class CartTableViewController: UITableViewController {
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CartCell", for: indexPath)
         
         let order = ordersInCart?[indexPath.row]
@@ -68,14 +68,14 @@ class CartTableViewController: UITableViewController {
 
     
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             ordersInCart?.remove(at: indexPath.row)
             // save array to disk
             tableView.deleteRows(at: [indexPath], with: .fade)
             if let orders = ordersInCart {
-                Orders.saveOrdersToArchive(orders: orders)
+                let _ = Orders.saveOrdersToArchive(orders: orders)
             }
             updateTotal()
         }
