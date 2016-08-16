@@ -26,8 +26,8 @@ class Orders: NSObject, NSCoding {
     }
     
     class func archiveFilePath() -> String {
-        let documentsDirectory = FileManager.default.urlsForDirectory(.documentDirectory, inDomains: .userDomainMask)[0]
-        return try! documentsDirectory.appendingPathComponent("cart.archive").path!
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        return documentsDirectory.appendingPathComponent("cart.archive").path
     }
     
     class func readOrdersFromArchive() -> [Order]? {

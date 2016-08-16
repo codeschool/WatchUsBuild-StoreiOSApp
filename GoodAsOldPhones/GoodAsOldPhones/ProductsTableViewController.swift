@@ -69,9 +69,9 @@ class ProductsTableViewController: UITableViewController {
         return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowProduct" {
-            let productVC = segue.destinationViewController as? ProductViewController
+            let productVC = segue.destination as? ProductViewController
             
             guard let cell = sender as? UITableViewCell,
                 let indexPath = tableView.indexPath(for: cell) else {
